@@ -1,0 +1,81 @@
+* {
+    margin: 0;
+    padding: 0;
+	position: relative;
+}
+
+h2{
+    height: calc(100vw / 24 * 2);
+    line-height: calc(100vw / 24 * 2);
+
+    padding-left: calc(100vw / 48);
+}
+
+body {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+}
+
+nav{
+    grid-column-start: 1;
+    grid-column-end: 1;
+}
+
+nav #logo{
+    color: white;
+    background: black;
+
+    height: calc(100vw / 24);
+
+    text-align: center;
+    line-height: calc(100vw / 24);
+}
+
+header{
+    grid-column-start: 2;
+    grid-column-end: 8;
+}
+
+header h1{
+    padding-left: calc(100vw / 48);
+    margin-bottom: calc(100vw / 48);
+
+    font-size: 64pt;
+}
+
+header p{
+    padding-left: calc(100vw / 48);
+    margin-bottom: calc(100vw / 96);
+
+    font-size: 12pt;
+}
+
+header p:last-of-type{
+    margin-bottom: calc(100vw / 48);
+}
+
+header #contact{
+    display: flex;
+}
+
+header #contact div{
+    width: 50%;
+
+    padding-right: calc(100vw / 48);
+
+    text-align: right;
+}
+
+header #contact img{
+    width: 50%;
+}
+
+#skills{
+    grid-column-start: 9;
+    grid-column-end: 15;
+}
+
+#projects{
+    grid-column-start: 15;
+    grid-column-end: 25;
+}
