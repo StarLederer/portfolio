@@ -30,6 +30,7 @@ h3 {
 	font-family: "Gilroy";
 	font-weight: 800;
 	font-size: 19pt;
+	line-height: 19pt;
 }
 
 p {
@@ -38,27 +39,39 @@ p {
 	font-size: 10pt;
 }
 
+img {
+	display: block;
+}
+
+/* Body */
 body {
 	display: grid;
 	grid-template-columns: repeat(24, 1fr);
 }
 
-nav {
-	grid-column-start: 1;
-	grid-column-end: 1;
-}
-
-nav::before {
+/* Section lines */
+nav::before,
+#skills::before,
+#skills::after {
 	content: "";
 
 	width: 1px;
 	height: 100vh;
 
-	background: rgba(0, 0, 0, 0.1);
+	background: #e6e6e6;
 
 	position: absolute;
 	top: 0;
+}
+nav::before,
+#skills::after {
 	right: 0;
+}
+
+/* Nav */
+nav {
+	grid-column-start: 1;
+	grid-column-end: 1;
 }
 
 nav #logo {
@@ -74,6 +87,7 @@ nav #logo {
 	line-height: calc(100vw / 24);
 }
 
+/* Header */
 header {
 	grid-column-start: 2;
 	grid-column-end: 9;
@@ -117,7 +131,7 @@ header #contact div {
 header #contact span {
 	margin-bottom: calc(100vw / 48 / 4);
 	opacity: 0.87;
-	font-size: 12pt;
+	font-size: 11pt;
 	display: block;
 }
 
@@ -129,21 +143,6 @@ header #contact img {
 #skills {
 	grid-column-start: 9;
 	grid-column-end: 15;
-}
-
-#skills::before, #skills::after{
-	content: "";
-
-	width: 1px;
-	height: 100vh;
-
-	background: rgba(0, 0, 0, 0.1);
-
-	position: absolute;
-    top: 0;
-}
-#skills::after{
-    right: 0;
 }
 
 #skills h3 {
@@ -170,7 +169,7 @@ header #contact img {
 
 	font-family: "Gilroy";
 	font-weight: 800;
-	font-size: 12pt;
+	font-size: 11pt;
 }
 
 #skills .skill .rating {
@@ -179,14 +178,62 @@ header #contact img {
 	text-align: center;
 	font-family: "Gilroy";
 	font-weight: 800;
-	font-size: 12pt;
+	font-size: 11pt;
 }
 
 #skills .skill .rating::after {
 	content: "/10";
 }
 
+#skills .skill::after {
+	content: "";
+
+	width: 100%;
+	height: 1px;
+
+	background: #e6e6e6;
+
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+/* Proejcts */
 #projects {
 	grid-column-start: 15;
 	grid-column-end: 25;
+}
+
+#projects .project {
+	background: black;
+	height: calc(100vw / 24 * 4);
+	margin-bottom: calc(100vw / 48);
+	margin-left: calc(100vw / 48);
+	text-decoration: none;
+	display: flex;
+	align-items: center;
+	overflow: hidden;
+}
+
+#projects .project img {
+	width: calc(100vw / 48 * 17);
+}
+
+#projects .project h3 {
+	color: white;
+
+	width: calc(100vw / 24 * 4);
+	height: calc(100vw / 24);
+	line-height: calc(100vw / 24);
+
+	position: absolute;
+	top: 0;
+	right: calc(100vw / 48 * -9);
+
+	padding-left: calc(100vw / 48);
+
+	transform: rotate(90deg);
+	transform-origin: 0% 0%;
+
+	font-size: 11pt;
 }
