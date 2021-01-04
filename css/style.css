@@ -52,7 +52,8 @@ body {
 /* Section lines */
 nav::before,
 #skills::before,
-#skills::after {
+#skills::after,
+#gallery::before {
 	content: "";
 
 	width: 1px;
@@ -237,4 +238,14 @@ header #contact img {
 	transform-origin: 0% 0%;
 
 	font-size: 11pt;
+}
+
+/* Gallery */
+#gallery {
+	grid-column-start: 9;
+	grid-column-end: 25;
+}
+
+#gallery .item {
+	margin-left: calc(100vw / 48);
 }
