@@ -1,7 +1,16 @@
+@font-face {
+    font-family: "Gilroy";
+    src: url("./fonts/Gilroy-ExtraBold.otf");
+    font-weight: 800;
+  }
+
 * {
     margin: 0;
     padding: 0;
-	position: relative;
+
+    position: relative;
+    
+    font-family: "Roboto", sans-serif;
 }
 
 h2{
@@ -9,6 +18,10 @@ h2{
     line-height: calc(100vw / 24 * 2);
 
     padding-left: calc(100vw / 48);
+
+    font-family: "Gilroy";
+    font-weight: 800;
+    font-size: 28pt;
 }
 
 body {
@@ -27,6 +40,9 @@ nav #logo{
 
     height: calc(100vw / 24);
 
+    font-family: "Gilroy";
+    font-weight: 800;
+    font-size: 20pt;
     text-align: center;
     line-height: calc(100vw / 24);
 }
@@ -40,14 +56,16 @@ header h1{
     padding-left: calc(100vw / 48);
     margin-bottom: calc(100vw / 48);
 
-    font-size: 64pt;
+    font-family: "Montserrat";
+    font-size: 51pt;
+    line-height: 51pt;
 }
 
 header p{
     padding-left: calc(100vw / 48);
     margin-bottom: calc(100vw / 96);
 
-    font-size: 12pt;
+    font-size: 10pt;
 }
 
 header p:last-of-type{
@@ -64,6 +82,19 @@ header #contact div{
     padding-right: calc(100vw / 48);
 
     text-align: right;
+}
+
+header #contact h3
+{
+    font-family: "Gilroy";
+    font-weight: 800;
+    font-size: 20pt;
+}
+
+header #contact span
+{
+    font-size: 12pt;
+    display: block;
 }
 
 header #contact img{
