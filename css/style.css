@@ -86,7 +86,10 @@ nav #logo {
 	font-weight: 800;
 	font-size: 20pt;
 	text-align: center;
+	text-decoration: none;
 	line-height: calc(100vw / 24);
+
+	display: block;
 }
 
 /* Header */
@@ -248,4 +251,11 @@ header #contact img {
 
 #gallery .item {
 	margin-left: calc(100vw / 48);
+	margin-bottom: calc(100vw / 48);
+	display: flex;
+}
+
+#gallery .item img {
+	width: calc(100vw / 48 * 17);
+	margin-right: calc(100vw / 48);
 }
