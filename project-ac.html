@@ -25,11 +25,63 @@
 			<h1>
 				Project-AC
 			</h1>
+
 			<p>
-				Project descriptiuon goes here.
+				This project is a 2-player competitive infinite runner game where you
+				place and break AC units to make your way up and outrun the opponent.
 			</p>
+
 			<p>
-				And uses multiple paragraphs.
+				This game was created for a college project that required me and my team to
+				make a game in the Unity engine. It happened so that I was the only developer
+				in the group with 2 artists and 2 designers, so the full honor of discovering Unity
+				was mine.
+			</p>
+
+			<p>
+				The gameplay programming consists of 3 main things: player movement,
+				AC unity manipulation, and background generation. I started out implementing player
+				movement by using Unity's 2D physics. At first, it was simple, just add forces to the
+				rigidbodies and the movement is done, but that simplicity ended when we decided that
+				we wanted the players to be able to stand on the rooftops and only collide with
+				AC units from the top. I considered using one-way colliders, but that couldn't solve
+				the problem because we were using 2D physics and there was a lot of overlap in the
+				Z coordinate (buildings layered on top of each other). Because of that, I ended up
+				making my own physics system for this project. I used raycasting to Unity colliders,
+				but all processing of forces and collisions was custom-made.
+			</p>
+
+			<p>
+				To enable the players to see their actions best the camera stayed centered between
+				both players and zoomed in or out based on how far apart they were. There is one more
+				thing I would implement If I had the skills then that I have now, I would
+				make the screen split in two and have two cameras follow each of the players if they
+				are too far apart.
+			</p>
+
+			<p>
+				To climb the rooftops, players have to place AC units on the sides of the buildings.
+				To make them align with the buildings we decided to use grids. Whenever a player
+				placed an AC unit, its position is divided by cell size, rounded, and multiplied by
+				the cell size back. That results in AC units snapping to the grid. The players have
+				16 units at their disposal when they start, but to keep moving forward they
+				have to stop on the rooftops where they can find more AC units and collect them.
+			</p>
+
+			<p>
+				The AC units on the rooftops are generated randomly, just like the background itself.
+				The buildings were aligned to the same grid as the AC units, that made it quite easy
+				to generate the background. What I ended up doing is I stored the heighest rooftop Y point and
+				every time one of the players was close enough for it to almost be visible on the screen,
+				I looped through the row of cells at that point, raycasted down and spawned a new
+				building centered at the intersection point.
+			</p>
+
+			<p>
+				This being my first ever Unity game I am extremely happy with how it turned out. I was
+				purprised how much I was able to make right away. The game was also really fun to play
+				and looked nice. To this day I still enjoy showing this game off to people and have
+				a little fun playing it.
 			</p>
 		</header>
 
@@ -37,24 +89,97 @@
 			<h2>Gallery</h2>
 
 			<div class="item">
-				<img
-					src="img/placeholder-project-hero.jpg"
-					alt="Fast volumetric light"
-				/>
+				<a target="blank" href="img/ac/action-2.jpg"
+					><img
+						src="img/ac/action-2.jpg"
+						alt="Project-AC"
+				/></a>
 				<div class="info">
-					<h3>Hero image</h3>
-					<p>Shows off the project from it's best angle.</p>
+					<h3>Gameplay screenshot</h3>
+					<p>
+						This is what the gameplay looks like: two players, the purple and the orange,
+						 chasing each other and jumping between rooftops and AC units.
+					</p>
 				</div>
 			</div>
 
 			<div class="item">
-				<img
-					src="img/placeholder-project-hero.jpg"
-					alt="Fast volumetric light"
-				/>
+				<a target="blank" href="img/ac/title.jpg"
+					><img
+						src="img/ac/title.jpg"
+						alt="Project-AC"
+				/></a>
 				<div class="info">
-					<h3>Close up</h3>
-					<p>Shows how the project works.</p>
+					<h3>Title screen</h3>
+					<p>
+						The game has the title screen. Eventhough it adds nothing to the gameplay,
+						I think it adds a lot to the game. There is something in being able to close 
+						the game by pressing a button instead of having to hit Alt f4.
+					</p>
+				</div>
+			</div>
+
+			<div class="item">
+				<a target="blank" href="img/ac/controls.jpg"
+					><img
+						src="img/ac/controls.jpg"
+						alt="Project-AC"
+				/></a>
+				<div class="info">
+					<h3>Controls</h3>
+					<p>
+						The controls in this game are not standard, so we had to show them to
+						the players. We made it so the players can practice in the background of
+						this scene before they both press their ready buttons.
+					</p>
+				</div>
+			</div>
+
+			<div class="item">
+				<a target="blank" href="img/ac/start.jpg"
+					><img
+						src="img/ac/start.jpg"
+						alt="Project-AC"
+				/></a>
+				<div class="info">
+					<h3>Beginning of the game</h3>
+					<p>
+						The players spawn on the ground standing next to each other and
+						holding 16 AC units. To prevent the players from getting soft locked,
+						the number is reset every time they touch the ground.
+					</p>
+				</div>
+			</div>
+			
+			<div class="item">
+				<a target="blank" href="img/ac/action.jpg"
+					><img
+						src="img/ac/action.jpg"
+						alt="Project-AC"
+				/></a>
+				<div class="info">
+					<h3>Gameplay screenshot</h3>
+					<p>
+						This is another gameplay screenshot. The AC units that are placed by
+						the players fall off after a short period of time. To make it easier to
+						tell whether the unit is safe or not, the player placed ones
+						light up in player colors.
+					</p>
+				</div>
+			</div>
+
+			<div class="item">
+				<a target="blank" href="img/ac/winner.jpg"
+					><img
+						src="img/ac/winner.jpg"
+						alt="Project-AC"
+				/></a>
+				<div class="info">
+					<h3>Winner screen</h3>
+					<p>
+						When one player gets too far ahead, the other starts losing health.
+						When the bar is out their opponent wins.
+					</p>
 				</div>
 			</div>
 		</section>
