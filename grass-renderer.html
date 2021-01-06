@@ -22,14 +22,62 @@
 		<header>
 			<h2>About</h2>
 
-			<h1>
-				Grass renderer with chunks and LODs
-			</h1>
+			<h1>Grass renderer with chunks and LODs</h1>
+
 			<p>
-				Project descriptiuon goes here.
+				This project is a grass population and rendering system for
+				Unity's High Definition Rendering Pipeline that can render Infinite fields of
+				animated grass.
 			</p>
+
 			<p>
-				And uses multiple paragraphs.
+				Back in the spring of 2020, I was working on a college project that required me
+				and my team to make a game. My team wanted to have high level of polish on
+				level design so I tried to provide them with the best tools to make that possible.
+			</p>
+
+			<p>
+				Adding foliage is an easy way to make outdoor  scenes look nice and detailed.
+				We were using HDRP, and at the time it did not have support for foliage rendering
+				so the responsibility of creating a foliage system fell on me. Eventually, the group
+				decided to change the direction and not have any outdoor scenes in the game.
+				This project was put on a shelf for a while, but I came back to this project and
+				finished it in the summer of 2020.
+			</p>
+
+			<p>
+				This project mainly consists of two components: the grass population system and
+				the grass renderer. The way the population system communicates with the renderer is
+				a point cloud mesh. The population system generates meshes of many points that
+				serve as grass origins. These meshes are rendered with a modified HDRP Lit shader
+				that has a geometry program in it. The geometry program calculates the
+				distance from the point to the camera and picks an LOD. Based on which lod is picked,
+				it then constructs 1, 2, or 3 quads with UV coordinates. HDRP Lit shader then takes
+				care of rendering it as it would render any other material.
+			</p>
+
+			<p>
+				Grass population system itself is quite simple. It splits the world in chunks
+				to achieve infinite coverage. The size and the amount of chunks is adjustable from
+				the inspector. The populator chunks into an object pool to optimize resource usage.
+			</p>
+
+			<p>
+				Whenever a chunk is loaded it runs a grass population process that generates the
+				point cloud mesh. It uses raycasts from a constant, camera-dependant height at random x
+				and z positions to find the top of whatever suitable surface it finds, and adds a point
+				to its mesh at that position.
+			</p>
+
+			<p>
+				When I finished this project I was only beginning to learn graphics programming.
+				While a project like this is expected to be resource-intensive I believe
+				I can improve it further by using large triangles instead of quads, calculating LOD levels
+				on the CPU and saving generated point cloud meshes.
+			</p>
+
+			<p>
+				Despite that, I really like what I achieved with my first graphics programming project.
 			</p>
 		</header>
 
@@ -37,24 +85,91 @@
 			<h2>Gallery</h2>
 
 			<div class="item">
-				<img
-					src="img/placeholder-project-hero.jpg"
-					alt="Fast volumetric light"
-				/>
+				<a target="blank" href="img/grass-renderer/front.jpg"
+					><img
+						src="img/grass-renderer/front.jpg"
+						alt="Grass renderer"
+				/></a>
 				<div class="info">
-					<h3>Hero image</h3>
-					<p>Shows off the project from it's best angle.</p>
+					<h3>Grassy field</h3>
+					<p>
+						The Unity template workshop in the middle of an infinite grass field.
+					</p>
+				</div>
+			</div>
+			
+			<div class="item">
+				<a target="blank" href="img/grass-renderer/back.jpg"
+					><img
+						src="img/grass-renderer/back.jpg"
+						alt="Grass renderer"
+				/></a>
+				<div class="info">
+					<h3>Another angle</h3>
+					<p>
+						Same template workshop in the field, but from another angle.
+					</p>
 				</div>
 			</div>
 
 			<div class="item">
-				<img
-					src="img/placeholder-project-hero.jpg"
-					alt="Fast volumetric light"
-				/>
+				<a target="blank" href="img/grass-renderer/scheme.jpg"
+					><img
+						src="img/grass-renderer/scheme.jpg"
+						alt="Grass renderer"
+				/></a>
 				<div class="info">
-					<h3>Close up</h3>
-					<p>Shows how the project works.</p>
+					<h3>LODs</h3>
+					<p>
+						This is what grass LODs look like from the top. LOD 2 is randomly rotated.
+					</p>
+				</div>
+			</div>
+
+			<div class="item">
+				<a target="blank" href="img/grass-renderer/field.jpg"
+					><img
+						src="img/grass-renderer/field.jpg"
+						alt="Grass renderer"
+				/></a>
+				<div class="info">
+					<h3>Infinite fields</h3>
+					<p>
+						This grass field is infinite, but the rendering distance is just low enough to
+						be able to see where the chunks end.
+					</p>
+				</div>
+			</div>
+
+			<div class="item">
+				<a target="blank" href="img/grass-renderer/gizmos.jpg"
+					><img
+						src="img/grass-renderer/gizmos.jpg"
+						alt="Grass renderer"
+				/></a>
+				<div class="info">
+					<h3>Chunks</h3>
+					<p>
+						This is what the chunks look like in the scene view. The center stays on the
+						active camera.
+					</p>
+				</div>
+			</div>
+
+			<div class="item">
+				<a target="blank" href="img/grass-renderer/inspector.png"
+					><img
+						src="img/grass-renderer/inspector.png"
+						alt="Grass renderer"
+				/></a>
+				<div class="info">
+					<h3>Settings</h3>
+					<p>
+						These are the settings that the grass population system allows to change.
+						The population doesn't have to be a grass population system,
+						it can take any material and render the point with it, but it does
+						assume that the shader needs the parameters it passes to the grass shader.
+					</p>
 				</div>
 			</div>
 		</section>

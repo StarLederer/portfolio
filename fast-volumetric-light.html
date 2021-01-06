@@ -22,14 +22,74 @@
 		<header>
 			<h2>About</h2>
 
-			<h1>
-				Fast volumetric light for mobile
-			</h1>
+			<h1>Fast volumetric light for mobile</h1>
+
+			<!--
+			<h4>Year</h4>
+			<p class="black">2020</p>
+			-->
+
 			<p>
-				Project descriptiuon goes here.
+				This project is a render feature for Unity that
+				approximates volumetric light on mobile hardware.
 			</p>
+
 			<p>
-				And uses multiple paragraphs.
+				The renderer was originally made for a VR training app that
+				was meant to run on Oculus Quest. Volumetric lighting was not
+				required for the project, but it was a college  project and I happened
+				to have had extra time on my hands. I was interested in
+				developing my graphics programming skills so I decided to challenge myself
+				to make something that would look great and run on low-end hardware.
+			</p>
+
+			<p>
+				I am a fan of volumetric light. I think it is an essential part
+				of making any environment look pleasant. Normally I would use
+				Unity's High Definition Rendering Pipeline that has support for
+				volumetric fog, but because of hardware limitations, I could not
+				do that this time. That is how the idea for this project was born.
+			</p>
+
+			<p>
+				I have read some material on rendering of volumes with raymartching before.
+				Raymarching, however, is a very resource-intensive technique and
+				implementing it was out of the question. For some reason, however, my mind
+				was refusing to give up one it and at one point I had a realization: I
+				don't need to implement raymarching in its standard form! Because I know
+				the position, rotation, color, and shape of each light and the atmosphere
+				can be assumed to have constant density I can calculate eye ray intersections
+				with the light volume, find out when the ray is in the middle of the volume,
+				sample light in-scattering at that point, and assume that to be the average
+				in-scattering across the ray within the volume.
+			</p>
+
+			<p>
+				That method worked out perfectly, but there are 2 disadvantages.
+				First, there are no shadows in the volume. I only sample a single point
+				so it is impossible for this renderer to know what the atmosphere looks
+				like before or after the intersection with the middle of the volume. If
+				I sample the shadowmap at the middle point and it is shaded, the entire
+				ray would also be shaded, which is wrong. But regardless, this project
+				is targeted at low-end hardware and shadows are not something
+				that is used on it often anyway.
+			</p>
+
+			<p>
+				The second flaw in this renderer is that it can only reder
+				spherical volumes correctly. The technique requires volumes to be symmetric
+				around a point, and the only shape  that fulfills  this requirement is a sphere.
+				Other shapes do work, but they look wrong from some angles.
+				This can be fixed by sampling 3 or more points
+				across the volume instead of 1, but I decided to stick with original
+				"as fast as possible" philosophy  and relied on artists to use point lights
+				wherever they could and use spotlights only where the player could see
+				them from the "good" angle.
+			</p>
+
+			<p>
+				Overall I am very happy with how this project turned out, and this is my
+				proudest work at the time of writing (January of 2021).
 			</p>
 		</header>
 
@@ -37,24 +97,77 @@
 			<h2>Gallery</h2>
 
 			<div class="item">
-				<img
-					src="img/placeholder-project-hero.jpg"
-					alt="Fast volumetric light"
-				/>
+				<a target="blank" href="img/volumetric-light/hero.jpg"
+					><img
+						src="img/volumetric-light/hero.jpg"
+						alt="Fast volumetric light"
+				/></a>
 				<div class="info">
 					<h3>Hero image</h3>
-					<p>Shows off the project from it's best angle.</p>
+					<p>
+						I really like this image. It is an early screenshot from
+						a VR game that this renderer was originally made for.
+						There are 5 volumetric lights in the scene, the lights on
+						the back of the bus, and the blue sphere.
+					</p>
 				</div>
 			</div>
 
 			<div class="item">
-				<img
-					src="img/placeholder-project-hero.jpg"
-					alt="Fast volumetric light"
-				/>
+				<a target="blank" href="img/volumetric-light/angle.jpg"
+					><img
+						src="img/volumetric-light/angle.jpg"
+						alt="Fast volumetric light"
+				/></a>
 				<div class="info">
-					<h3>Close up</h3>
-					<p>Shows how the project works.</p>
+					<h3>Mist from dithering</h3>
+					<p>
+						This project was originally made for Oculus Quest, and
+						the panel on that device introduces strong banding in
+						the dark colors. To remedy that I added dithering, but
+						when playing with the intensity slider I noticed that it
+						made it look like there was mist in the atmosphere. Now
+						stong dithering is a stylistic part of the project.
+					</p>
+				</div>
+			</div>
+
+			<div class="item">
+				<a target="blank" href="img/volumetric-light/cones.jpg"
+					><img
+						src="img/volumetric-light/cones.jpg"
+						alt="Fast volumetric light"
+				/></a>
+				<div class="info">
+					<h3>Supports spot lights</h3>
+					<p>
+						Because the volumetric lights are drawn as additive full
+						screen quads they can be any shape that can be described
+						with mathematics. There is support for point and spot
+						lights, but other shapes can be easily added to the
+						renderer. I plan to add cube, frustum, cylinder, and
+						capsule volumes in the future.
+					</p>
+				</div>
+			</div>
+
+			<div class="item">
+				<a target="blank" href="img/volumetric-light/cones-2.jpg"
+					><img
+						src="img/volumetric-light/cones-2.jpg"
+						alt="Fast volumetric light"
+				/></a>
+				<div class="info">
+					<h3>Volume approximation</h3>
+					<p>
+						The way volumes are calculated is inspired by
+						raymarching, but unlike raymarching, my method does not
+						use any loops. This renderer calculates light
+						in-scattering using a single sample in the middle of
+						each volume. This is faster to calculate but looks
+						wrong when volumes have sharp edges, like, for example,
+						the base of the white cone on this image.
+					</p>
 				</div>
 			</div>
 		</section>
