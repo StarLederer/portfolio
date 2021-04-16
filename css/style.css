@@ -362,7 +362,7 @@ header #contact img {
 
 	/* Mobile header */
 	header h1 {
-		margin-bottom: calc(100vw / 24);
+		margin-bottom: calc(100vw / 12);
 	}
 
 	header p {
@@ -464,15 +464,23 @@ header #contact img {
 	#gallery .item {
 		padding: 0;
 		margin: 0;
-		margin-bottom: calc(100vw / 12);
 
 		flex-direction: column;
+	}
+	#gallery .item .info {
+		margin: 0;
 	}
 	#gallery .item a {
 		margin-bottom: calc(100vw / 24);
 	}
+	#gallery .item h3 {
+		margin-bottom: calc(100vw / 48);
+	}
 	#gallery .item img {
 		width: 100%;
+	}
+	#gallery .item p {
+		margin-bottom: calc(100vw / 12);
 	}
 
 	body {
