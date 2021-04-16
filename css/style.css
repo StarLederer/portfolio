@@ -1,6 +1,6 @@
 @font-face {
 	font-family: "Gilroy";
-	src: url("./fonts/Gilroy-ExtraBold.otf");
+	src: url("../fonts/Gilroy-ExtraBold.otf");
 	font-weight: 800;
 }
 
@@ -14,7 +14,6 @@
 }
 
 h1 {
-	padding-left: calc(100vw / 48);
 	margin-bottom: calc(100vw / 48);
 
 	font-family: "Montserrat";
@@ -177,13 +176,19 @@ header #contact img {
 }
 
 #skills .skill {
+	height: calc(100vw / 24);
+
 	display: flex;
 	justify-content: space-between;
 }
 
+#skills * {
+	display: flex;
+	align-items: center;
+}
+
 #skills .skill .name {
 	padding-left: calc(100vw / 48);
-	line-height: calc(100vw / 24);
 
 	font-family: "Gilroy";
 	font-weight: 800;
@@ -192,7 +197,6 @@ header #contact img {
 
 #skills .skill .rating {
 	width: calc(100vw / 24);
-	line-height: calc(100vw / 24);
 
 	text-align: center;
 	font-family: "Gilroy";
@@ -209,12 +213,11 @@ header #contact img {
 
 	width: 100%;
 	height: 1px;
-
-	background: #e6e6e6;
-
 	position: absolute;
 	bottom: 0;
 	right: 0;
+
+	background: #e6e6e6;
 }
 
 /* Proejcts */
@@ -325,8 +328,20 @@ header #contact img {
 		line-height: 26pt;
 	}
 
+	/* Mobile paddings */
+	h2,
+	header h1,
+	header p {
+		padding: 0;
+	}
+
+	header {
+		padding: calc(100vw / 24);
+	}
+
 	h2 {
 		font-size: 14pt;
+		padding-bottom: calc(100vw / 24);
 	}
 
 	h3 {
@@ -334,35 +349,154 @@ header #contact img {
 		line-height: 10pt;
 	}
 
-	p,
-	header #contact span,
+	/* Mobile nav */
+	nav #logo {
+		height: calc(100vw / 12);
+
+		line-height: calc(100vw / 12);
+		font-size: calc(100vw / 24);
+		text-align: left;
+
+		padding: 0 calc(100vw / 24);
+	}
+
+	/* Mobile header */
+	header h1 {
+		margin-bottom: calc(100vw / 24);
+	}
+
+	header p {
+		margin-bottom: calc(100vw / 48);
+	}
+
+	header p:last-of-type {
+		margin-bottom: calc(100vw / 12);
+	}
+
+	#contact {
+		margin-bottom: calc(100vw / 24);
+	}
+
+	/* Mobile skills */
+	#skills {
+		padding: calc(100vw / 24) 0 0;
+		background: black;
+		color: white;
+	}
+
+	#skills h2 {
+		padding-left: calc(100vw / 24);
+	}
+
+	#skills h3 {
+		padding: calc(100vw / 24);
+	}
+
+	#skills .skill {
+		height: calc(100vw / 12 * 2);
+	}
+	#skills .skill::after {
+		content: "";
+
+		width: 100%;
+		height: 1px;
+		position: absolute;
+		top: 1px;
+		right: 0;
+
+		background: rgba(255, 255, 255, 0.1);
+	}
 	#skills .skill .name,
-	#skills .skill .rating,
+	#skills .skill .rating {
+		font-family: "Roboto", sans-serif;
+		font-weight: 400;
+		opacity: 0.9;
+	}
+	#skills .skill .name {
+		padding: 0 calc(100vw / 24);
+	}
+	#skills .skill .rating {
+		width: auto;
+		right: calc(100vw / 24);
+	}
+
+	/* Mobile projects */
+	#projects {
+		padding: calc(100vw / 24) 0 0;
+	}
+
+	#projects h2 {
+		padding-left: calc(100vw / 24);
+	}
+
+	#projects .project {
+		height: auto;
+		margin-left: calc(100vw / 24);
+		margin-right: calc(100vw / 24);
+		margin-bottom: calc(100vw / 12);
+
+		flex-direction: column;
+	}
+	#projects .project img {
+		width: 100%;
+	}
 	#projects .project h3 {
-		font-size: 9pt;
-	}
-}
+		width: 100%;
+		height: calc(100vw / 12);
+		box-sizing: border-box;
+		position: relative;
+		top: auto;
+		bottom: 0;
+		left: 0;
+		right: auto;
+		transform: none;
+		padding: 0 calc(100vw / 24);
+		margin: 0;
 
-@media screen and (max-width: 768px) {
-	h1 {
-		font-size: 20pt;
-		line-height: 20pt;
-	}
-
-	h2 {
-		font-size: 12pt;
-	}
-
-	h3 {
-		font-size: 9pt;
-		line-height: 9pt;
+		display: flex;
+		align-items: center;
 	}
 
-	p,
-	header #contact span,
-	#skills .skill .name,
-	#skills .skill .rating,
-	#projects .project h3 {
-		font-size: 9pt;
+	/* Mobile gallery */
+	#gallery {
+		padding: calc(100vw / 24);
+	}
+	#gallery .item {
+		padding: 0;
+		margin: 0;
+		margin-bottom: calc(100vw / 12);
+
+		flex-direction: column;
+	}
+	#gallery .item a {
+		margin-bottom: calc(100vw / 24);
+	}
+	#gallery .item img {
+		width: 100%;
+	}
+
+	body {
+		display: block;
+	}
+
+	/* Section lines */
+	nav::before {
+		display: none;
+	}
+
+	#skills::before,
+	#skills::after,
+	#gallery::before {
+		content: "";
+
+		width: 100%;
+		height: 1px;
+		min-height: auto;
+
+		background: #e6e6e6;
+
+		position: absolute;
+		top: 0;
+		left: 0;
 	}
 }
